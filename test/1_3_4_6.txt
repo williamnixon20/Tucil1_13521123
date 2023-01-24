@@ -1,0 +1,4 @@
+Terdapat 1 solusi.
+6 / ( 1 - ( 3 / 4 ) )
+
+Waktu yang dibutuhkan 1 ms

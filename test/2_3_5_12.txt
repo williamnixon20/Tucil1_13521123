@@ -1,0 +1,4 @@
+Terdapat 1 solusi.
+12 / ( 3 - ( 5 / 2 ) )
+
+Waktu yang dibutuhkan 1 ms
