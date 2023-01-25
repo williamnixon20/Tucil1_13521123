@@ -14,7 +14,16 @@ Program is built on c++, requiring you to have g++ installed. Program was tested
 2. Run the following command `g++ -o bin/main src/main.cpp -lm`. This will compile the main.cpp code and put in on bin/main.
 3. Execute the program by running the command `./bin/main`. Enjoy!
 
+## How to use
+If you want the cards to be generated randomly, enter 1.
+If you want the cards to be manualaly inputted, enter 2.
+
 Program accepts inputs in the form of 1-13 or A, 2-10, J, K, Q.
+
+Program outputs the number of solution and the solutions.
+Enter y/Y if you want to save the output to a file.
+Enter t/T if you wanna skip the step.
+
 
 ## Author information
 13521123 - William Nixon - K01
