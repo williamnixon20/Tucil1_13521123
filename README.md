@@ -11,7 +11,7 @@ Program uses pure brute-force to try out all possibilities and permutations that
 Program is built on c++, requiring you to have g++ installed. Program was tested using c++17.
 
 1. Be on root directory, not src/test/doc/bin.
-2. Run the following command `g++ -std=c17 -o bin/main src/main.cpp -lm`. This will compile the main.cpp code and put in on bin/main.
+2. Run the following command `g++ -o bin/main src/main.cpp -lm`. This will compile the main.cpp code and put in on bin/main.
 3. Execute the program by running the command `./bin/main`. Enjoy!
 
 Program accepts inputs in the form of 1-13 or A, 2-10, J, K, Q.

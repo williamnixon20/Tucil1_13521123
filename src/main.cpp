@@ -14,6 +14,7 @@ using namespace std;
 int DIGITS[4];
 const int MAX_VAL = 13;
 const char OPS[] = {'+', '-', '*', '/'};
+const float tolerance = 0.000001;
 set<string> result;
 
 
@@ -24,7 +25,7 @@ void displayDigits();
 void solve();
 int convert(string input);
 void processDigits(int num1, int num2, int num3, int num4);
-void displayResult(int count);
+void displayResult(float count);
 void handleSave(float count);
 
 int main()
@@ -40,7 +41,7 @@ int main()
     solve();
 
     auto t2 = chrono::high_resolution_clock::now();
-    auto ms_int = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1);
+    std::chrono::duration<double>  ms_int = (t2-t1) * 1000;
 
     displayResult(ms_int.count());
     handleSave(ms_int.count());
@@ -151,10 +152,11 @@ float operation(float num1, float num2, char op) {
         case '*':
             return num1 * num2;
     }
+    return 0;
 }
 
 // Tampilkan hasil eksekusi program dan juga solusi.
-void displayResult(int ms_int) {
+void displayResult(float ms_int) {
     if (result.size() == 0) {
         cout << "Tidak terdapat solusi" << endl;
     } else {
@@ -210,7 +212,7 @@ void processDigits(int num1, int num2, int num3, int num4)
                 // (NUM OP NUM) OP (NUM OP NUM)
                 float firstPossibility = operation(firstPair, thirdPair, OPS[op2]);
 
-                if (abs(firstPossibility-24) < 0.0001) {
+                if (abs(firstPossibility-24) < tolerance) {
                     stream << "( " << num1 << " " << OPS[op1] << " " << num2 << " ) " << OPS[op2] << " ( " << num3 << " " << OPS[op3] << " " << num4 << " )";
                     new_string = stream.str();
                     result.insert(new_string);
@@ -219,7 +221,7 @@ void processDigits(int num1, int num2, int num3, int num4)
                 // ((NUM OP NUM) OP NUM) OP NUM
                 float secondPossibility = operation(operation(firstPair, num3, OPS[op2]), num4, OPS[op3]);
     
-                if (abs(secondPossibility - 24) < 0.0001)
+                if (abs(secondPossibility - 24) < tolerance)
                 {
                     stream.str("");
                     stream.clear();
@@ -231,7 +233,7 @@ void processDigits(int num1, int num2, int num3, int num4)
                 // (NUM op (NUM op NUM)) op NUM
                 float thirdPossibility = operation(operation(num1, secondPair, OPS[op1]), num4, OPS[op3]);
 
-                if (abs(thirdPossibility - 24) < 0.0001)
+                if (abs(thirdPossibility - 24) < tolerance)
                 {
                     stream.str("");
                     stream.clear();
@@ -243,7 +245,7 @@ void processDigits(int num1, int num2, int num3, int num4)
                 float fourthPossibility = operation(num1, operation(secondPair, num4, OPS[op3]), OPS[op1]);
 
                 // NUM op ((NUM op NUM) op NUM)
-                if (abs( fourthPossibility - 24) < 0.0001)
+                if (abs( fourthPossibility - 24) < tolerance)
                 {
                     stream.str("");
                     stream.clear();
@@ -255,7 +257,7 @@ void processDigits(int num1, int num2, int num3, int num4)
                 float fifthPossibility = operation(num1, operation(num2, thirdPair, OPS[op2]),OPS[op1]);
 
                 // NUM op (NUM op (NUM op NUM))
-                if (abs(fifthPossibility - 24) < 0.0001)
+                if (abs(fifthPossibility - 24) < tolerance)
                 {
                     stream.str("");
                     stream.clear();
